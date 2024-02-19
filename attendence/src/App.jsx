@@ -41,6 +41,10 @@ function App() {
         <Route path="/classes/F4" element={<F4 />} />
         <Route path="/classes/F3" element={<F3 />} />
         <Route path="/classes/F2" element={<F2 />} />
+
+        <Route path="/classes/F4/Listnames" element={<F4 />} />
+        <Route path="/classes/F3/Listnames" element={<F3 />} />
+        <Route path="/classes/F2/Listnames" element={<F2 />} />
         <Route path="/about" />
         <Route path="/contact" />
       </Routes>

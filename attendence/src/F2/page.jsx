@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import ListStudent from "../components/ListStudent";
+import Listnames from "../components/listOnlynames";
 import supabase from "../lib/supabase";
 
 const Students = () => {
@@ -38,7 +39,10 @@ const Students = () => {
       <div className="studentHaye">
         <h1 className="text-center">Student List</h1>
         {students ? (
+          <>
           <ListStudent students={students} classIdentifier={ClassIdentifier} currentDate={currentDate} />
+          <Listnames students={students} classIdentifier={ClassIdentifier} currentDate={currentDate} />
+          </>
         ) : (
           <span class="loader"></span>
         )}

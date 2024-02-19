@@ -1,15 +1,15 @@
-
 import { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import ListStudent from "../components/ListStudent";
 import supabase from "../lib/supabase";
 import { useParams } from "react-router-dom";
+import Listnames from "../components/listOnlynames";
 
 const Students = () => {
-  const {className} = useParams()
+  const { className } = useParams();
   const [students, setStudents] = useState(null);
   const [error, setError] = useState();
-  const ClassIdentifier = 'f3students'
+  const ClassIdentifier = "f3students";
 
   useEffect(() => {
     async function fetchData() {
@@ -18,7 +18,7 @@ const Students = () => {
         if (error) {
           setError(error);
           setStudents(null);
-          console.log(error)
+          console.log(error);
         } else {
           setStudents(data);
           setError(null);
@@ -35,19 +35,30 @@ const Students = () => {
 
   const currentDate = new Date().toISOString().slice(0, 10);
 
-
   return (
     <>
       <Nav />
       <div className="studentHaye">
         <h1 className="text-center">Student List</h1>
-        {students ?
-         <ListStudent  students={students} classIdentifier={ClassIdentifier}  currentDate={currentDate} /> : 
-         <span class="loader"></span>}
+        {students ? (
+          <>
+            <ListStudent
+              students={students}
+              classIdentifier={ClassIdentifier}
+              currentDate={currentDate}
+            />
+            <Listnames
+              students={students}
+              classIdentifier={ClassIdentifier}
+              currentDate={currentDate}
+            />
+          </>
+        ) : (
+          <span class="loader"></span>
+        )}
       </div>
     </>
   );
 };
 
 export default Students;
-

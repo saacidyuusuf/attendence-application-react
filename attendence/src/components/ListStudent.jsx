@@ -1,44 +1,49 @@
 /* eslint-disable */
 import { useState } from "react";
-import supabase from  '../lib/supabase'
-import { Link } from 'react-router-dom'
+import supabase from "../lib/supabase";
+import { Link } from "react-router-dom";
+import DisplayBtns from "./displayBtns";
 
-
-const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => {
-  console.log(students);
-  const { ClassName } = students;
+const ListStudent = ({
+  students,
+  classesData,
+  currentDate,
+  classIdentifier,
+}) => {
+  // console.log(students);
   const [isChecked, setIsChecked] = useState(false);
   const [allChecked, setAllChecked] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleAllCheckboxChange = (event) => {
-    const checked = event.target.checked;
+  const handleAllcheckbox = (e) => {
+    const checked = e.target.checked;
     setIsChecked(checked);
     if (checked) {
-      const allStudentNames = students.map((student) => student.name);
-      setAllChecked(allStudentNames);
+      const checkallNames = students.map((student) => student.name);
+      setAllChecked(checkallNames);
     } else {
       setAllChecked([]);
     }
   };
-  const handleCheckboxChange = (event) => {
-    const checkboxName = event.target.name;
-    const checked = event.target.checked;
+
+  const handleSingleCheckbox = (e) => {
+    const checked = e.target.checked;
+    const checkedName = e.target.name;
     if (checked) {
-      setAllChecked((prevState) => [...prevState, checkboxName]);
+      setAllChecked((prevState) => [...prevState, checkedName]);
     } else {
       setAllChecked((prevState) =>
-        prevState.filter((name) => name !== checkboxName)
+        prevState.filter((state) => state !== checkedName)
       );
     }
   };
 
-  const handleCancel = () =>{
+  const handleCancel = () => {
     setAllChecked([]);
-  }
-  
+  };
+
   //send attendence to supabase
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -48,11 +53,11 @@ const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => 
         studentname: student.name,
         date: currentDate,
         ispresent: allChecked.includes(student.name),
-        class: classIdentifier
+        class: classIdentifier,
       }));
       const { data, error } = await supabase
         .from("attendance")
-        .upsert(attendanceData, { onConflict: ["studentid", "date",'class'] });
+        .upsert(attendanceData, { onConflict: ["studentid", "date", "class"] });
 
       if (error) {
         console.error(error);
@@ -60,7 +65,7 @@ const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => 
         console.log(data);
         setIsSent(true);
         setAllChecked([]);
-        setIsModalVisible(true)
+        setIsModalVisible(true);
         setTimeout(() => {
           setIsModalVisible(false);
         }, 2000);
@@ -82,15 +87,22 @@ const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => 
         <div className="infoClass">
           <>
             <h1>
-              Class: <span>{students.length > 0 ? students[0].ClassName : ''}</span>
+              Class:
+              <span>{students.length > 0 ? students[0].ClassName : ""}</span>
             </h1>
             <h1>
-              Subject: <span>{classesData}</span>
+              Subject:
+              <span>{students.length > 0 ? students[1].subject : ""}</span>
             </h1>
             <h1>
               Date:
               <span>
-                <input type="date" className="currentDate" value={currentDate} disabled />
+                <input
+                  type="date"
+                  className="currentDate"
+                  value={currentDate}
+                  disabled
+                />
               </span>
             </h1>
           </>
@@ -105,13 +117,12 @@ const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => 
             <h1>Name</h1>
             <h2>Check all</h2>
             <input
-              checked={isChecked}
-              onChange={handleAllCheckboxChange}
               type="checkbox"
+              checked={isChecked}
+              onChange={handleAllcheckbox}
               className="radio"
             />
           </div>
-          
           <div className="tableNames">
             {students.map((student) => (
               <>
@@ -123,10 +134,10 @@ const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => 
                   <div className="divRadio">
                     <input
                       type="checkbox"
-                      checked={allChecked.includes(student.name)}
-                      onChange={handleCheckboxChange}
-                      name={student.name}
                       className="radio"
+                      checked={allChecked.includes(student.name)}
+                      onChange={handleSingleCheckbox}
+                      name={student.name}
                     />
                   </div>
                 </div>
@@ -139,7 +150,9 @@ const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => 
             >
               {isLoading ? "Loading.." : "Submit"}
             </button>
-            <button onClick={handleCancel} className="cancel">Cancel</button>
+            <button onClick={handleCancel} className="cancel">
+              Cancel
+            </button>
             {/* MODal */}
             <div
               className="modal"
@@ -149,8 +162,7 @@ const ListStudent = ({ students, classesData, currentDate,classIdentifier }) => 
                 <span
                   className="close"
                   onClick={() => setIsModalVisible(false)}
-                >
-                </span>
+                ></span>
                 <p>Attendance sent successfully</p>
               </div>
             </div>
