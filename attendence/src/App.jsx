@@ -15,23 +15,26 @@ import F2 from "./F2/page";
 
 function App() {
   const router = useNavigate();
+  const user = true;
 
-  /* useEffect(() => {
+  /*  useEffect(() => {
     if (!user) {
       router("/");
     } else {
-      router("/Dashboard");
+      router("/dashboard");
     }
   }); */
   console.log(supabase);
 
   return (
     <>
-    
       <Routes>
-        {/*     <Route path="/" element={<Auth />} /> */}
-        <Route path="/" element={<DashPage />} />
-        <Route path="/dashboard/timetable" element={<Timetable />} />
+        {/*    <Route path="/" element={<Auth />} /> */}
+        <Route path="/" element={<DashPage user={user} />} />
+        <Route
+          path="/dashboard/timetable"
+          element={<Timetable user={user} />}
+        />
         <Route path="/dashboard/attendencerate" element={<Attendencerate />} />
         <Route path="/dashboard/attendenceweek" element={<Attendenceweek />} />
         <Route
@@ -41,7 +44,6 @@ function App() {
         <Route path="/classes/F4" element={<F4 />} />
         <Route path="/classes/F3" element={<F3 />} />
         <Route path="/classes/F2" element={<F2 />} />
-
         <Route path="/classes/F4/Listnames" element={<F4 />} />
         <Route path="/classes/F3/Listnames" element={<F3 />} />
         <Route path="/classes/F2/Listnames" element={<F2 />} />

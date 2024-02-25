@@ -26,7 +26,6 @@ const displayBtns = () => {
       <FiMenu className="dashOpenMenu" onClick={() => setOpenBtns(!openBtns)} />
       <div>
         {openBtns && (
-          <div className="dash">
             <div className="btnsDash">
               <Link className="link" to="/dashboard">
                 <BiHomeAlt className="classesicon" />
@@ -65,7 +64,6 @@ const displayBtns = () => {
                 <p>Attendence Rate</p>
               </Link>
             </div>
-          </div>
         )}
       </div>
     </>

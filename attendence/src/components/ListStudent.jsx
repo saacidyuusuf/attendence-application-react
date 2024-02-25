@@ -3,6 +3,7 @@ import { useState } from "react";
 import supabase from "../lib/supabase";
 import { Link } from "react-router-dom";
 import DisplayBtns from "./displayBtns";
+import DashBtns from "./DashBtns";
 
 const ListStudent = ({
   students,
@@ -79,7 +80,7 @@ const ListStudent = ({
 
   return (
     <>
-      <Link className="backdash" to="/">
+  <Link className="backdash" to="/">
         Back to Dashboard
       </Link>
       <div className="listStudents">

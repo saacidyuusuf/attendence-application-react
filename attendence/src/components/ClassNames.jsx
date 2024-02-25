@@ -13,8 +13,8 @@ const ClassNames = ({ classesData }) => {
 
   return (
     <>
-      <DashBtns />
-      <div className="dashClass">
+{/*       <DashBtns />
+ */}      <div className="dashClass">
         <div className="date">
           <h1 className="dashText">Dashboard</h1>
           <div className="current">

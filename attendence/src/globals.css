@@ -8,7 +8,7 @@
 }
 
 :root {
-  --main-color: #c69c6c;
+  --main-color: rgba(67, 165, 82, 0.952);
   --second-color: white;
   --black-color: #08243a;
 }
@@ -36,6 +36,7 @@ body {
   font-size: 1.2rem;
   font-family: sans-serif, cursive;
 }
+
 
 .header button {
   border: none;
@@ -82,12 +83,7 @@ nav ul li {
   font-size: 1.8rem;
 }
 
-.barbardhig{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
+ 
 
 .auth {
   background-color: black;
@@ -641,6 +637,7 @@ p {
   border-bottom: 4px solid transparent;
   animation: rotation 0.5s linear infinite reverse;
 }
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -655,7 +652,7 @@ p {
 .TimeTable {
   width: 80%;
   text-align: center;
-  background-color: rgb(236, 231, 231);
+  background-color: black;
   margin: auto;
   margin-top: 1.5rem;
   border-radius: 1rem;
@@ -664,6 +661,7 @@ p {
 .TimeTable h1 {
   font-weight: bold;
   font-size: 2rem;
+  color: rgb(230, 225, 225);
 }
 
 .infoTable {
@@ -694,7 +692,7 @@ p {
   background-color: var(--main-color);
   padding: 6px 2px;
   border-radius: 8px;
-  color: white;
+  color: black;
 }
 
 .bodyTable {
@@ -900,10 +898,24 @@ input {
 .dashDIsplay {
   width: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.navFlex{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+} 
+
+.barbardhig{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .dashClass {
+  display: inline;
   width: 100%;
   margin-top: 2rem;
   margin-right: 0.5rem;
