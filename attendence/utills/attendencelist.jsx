@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const classeslist = () => {
   return (
     <motion.div
-      className="showclasses"
+      className="showAttendence"
       variants={staggerContainer}
       initial="hidden"
       whileInView="show"

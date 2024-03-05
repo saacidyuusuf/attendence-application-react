@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import DashPage from "./dashboard/Dashboard";
 import Auth from "./Auth/page";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
 import supabase from "./lib/supabase";
 import Timetable from "./dashboard/timetable";
 import Attendencerate from "./dashboard/attendencerate";
@@ -12,10 +12,11 @@ import Attendenceweek from "./dashboard/attendenceweek";
 import F4 from "./F4/page";
 import F3 from "./F3/page";
 import F2 from "./F2/page";
+import { ContextHaye } from "./context/context";
 
 function App() {
   const router = useNavigate();
-  const user = true;
+  const {user} = useContext(ContextHaye)
 
   /*  useEffect(() => {
     if (!user) {
@@ -29,18 +30,16 @@ function App() {
   return (
     <>
       <Routes>
-        {/*    <Route path="/" element={<Auth />} /> */}
-        <Route path="/" element={<DashPage user={user} />} />
+        <Route path="/" element={<Auth />} />
+        <Route path="/dashboard" element={<DashPage/>} />
         <Route
           path="/dashboard/timetable"
-          element={<Timetable user={user} />}
-        />
+          element={<Timetable user={user}/>}/>
         <Route path="/dashboard/attendencerate" element={<Attendencerate />} />
         <Route path="/dashboard/attendenceweek" element={<Attendenceweek />} />
         <Route
           path="/dashboard/studentattendence"
-          element={<StudentAttendence />}
-        />
+          element={<StudentAttendence />}/>
         <Route path="/classes/F4" element={<F4 />} />
         <Route path="/classes/F3" element={<F3 />} />
         <Route path="/classes/F2" element={<F2 />} />

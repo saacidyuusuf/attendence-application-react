@@ -1,7 +1,6 @@
 /* eslint-disable */
+import React from "react";
 import { Link } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
-
 import {
   BiSolidDashboard,
   BiCalendarWeek,
@@ -11,63 +10,65 @@ import {
   BiCoinStack,
 } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { ContextHaye } from "../context/context";
 import Classeslist from "../../utills/Classeslist";
+import Category from "../components/CategoryData";
 import Attendencelist from "../../utills/attendencelist";
 
-const DashBtns = () => {
+const DashBtns = ({ OncategorySelected }) => {
   const [classes, setclasses] = useState(false);
-  const [attendence, setattendence] = useState(false);
   const [openBtns, setOpenBtns] = useState(false);
   const { dataClass } = useContext(ContextHaye);
+  const [showAttendenceList, setShowAttendenceList] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(0); // Initial state
+  const [showClassesList, setShowClassesList] = useState(false);
+
+  useEffect(() => {
+    if (selectedCategory === 1) {
+      setShowClassesList(true);
+      setShowAttendenceList(false);
+    } else if (selectedCategory === 2) {
+      setShowClassesList(false);
+      setShowAttendenceList(true);
+    } else {
+      setShowClassesList(false);
+      setShowAttendenceList(false);
+    }
+  }, [selectedCategory]);
+  const handleCategoryClick = (index) => {
+    setSelectedCategory(index);
+    OncategorySelected(index); // Call passed function to update parent component state
+  };
+  // Toggle showing the Classes list based on the selected category
 
   return (
     <>
-      <FiMenu className="dashOpenMenu" onClick={() => setOpenBtns(!openBtns)}/>
+      <FiMenu className="dashOpenMenu" onClick={() => setOpenBtns(!openBtns)} />
 
       {!openBtns && (
-      <div className="dash">
-        <div className="btnsDash">
-          <Link className="link" to="/dashboard">
-            <BiHomeAlt className="classesicon" />
-            <p>Dashboard</p>
-          </Link>
-          <div className="Container" onClick={() => setclasses(!classes)}>
-            <BiCoinStack className={`dclass`} />
-            <p>Classes</p>
-            <span className="classesLength">
-              {dataClass ? dataClass.length : 0}{" "}
-            </span>
-            {classes && <Classeslist />}
-          </div>
-          <div
-            className="attendenceContainer"
-            onClick={() => setattendence(!attendence)}
-          >
-            <BiBookOpen className={`dashIcons att`} />
-            <p>Student Attendence</p>
-            <span className="attendenceLength">
-              {dataClass ? dataClass.length : 0}
-            </span>
-            {attendence && <Attendencelist />}
+        <div className="dash">
+          {Category.map((cate, index) => (
+            <div
+              onClick={() => handleCategoryClick(index)}
+              className={
+                selectedCategory === index ? "SelectedGreen" : "btnsDash"
+              }
+            >
+              <p className="dashIcons">{React.createElement(cate.icon)}</p>
+              <p>{cate.name}</p>
+            </div>
+          ))}
+
+          <div className="DisplayClasses">
+            {showClassesList && <Classeslist />}
           </div>
 
-          <Link className="link" to="/dashboard/timetable">
-            <BiSolidDashboard className="dashIcons" />
-            <p>TimeTable Period</p>
-          </Link>
-          <Link className="link" to="/dashboard/attendenceweek">
-            <BiCalendarWeek className="dashIcons" />
-            <p>Attendence Week</p>
-          </Link>
-          <Link className="link" to="/dashboard/attendencerate">
-            <BiBarChart className="dashIcons" />
-            <p>Attendence Rate</p>
-          </Link>
+          <div className="DisplayAttendence">
+            {showAttendenceList && <Attendencelist />}
+          </div>
         </div>
-      </div>
       )}
     </>
   );

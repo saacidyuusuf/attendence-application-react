@@ -23,11 +23,10 @@ const TimeTable = ({user}) => {
   console.log(timetable);
   return (
     <>
-      <Nav />
+      <div className="TimeTable">
       <Link className="backdash" to="/">
         Back to Dashboard
       </Link>
-      <div className="TimeTable">
         <h1 className="one">TimeTable</h1>
         <div className="infoTimeTable">
           <h1>Class</h1>

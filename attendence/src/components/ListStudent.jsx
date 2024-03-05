@@ -80,7 +80,7 @@ const ListStudent = ({
 
   return (
     <>
-  <Link className="backdash" to="/">
+  <Link className="backdash" to="/dashboard">
         Back to Dashboard
       </Link>
       <div className="listStudents">
@@ -147,8 +147,7 @@ const ListStudent = ({
             <button
               type="submit"
               onClick={handleSubmit}
-              className="submitStudents"
-            >
+              className="submitStudents">
               {isLoading ? "Loading.." : "Submit"}
             </button>
             <button onClick={handleCancel} className="cancel">

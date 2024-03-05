@@ -14,12 +14,10 @@ import User from "./User";
 import supabase from "../lib/supabase";
 import { Link } from "react-router-dom";
 import { ContextHaye } from "../context/context";
-import Attendencelist from "../../utills/attendencelist";
-import Classeslist from "../../utills/classeslist";
-/* import DisplayBtns from "./displayBtns";
- */
 import Display from "./DashBtns";
-export default function Nav({ user }) {
+
+export default function Nav() {
+  const { user } = useContext(ContextHaye);
   const [profile, setProfile] = useState(false);
   const router = useNavigate();
 
@@ -43,8 +41,6 @@ export default function Nav({ user }) {
             <User />
           </header>
         </div>
-        <Display />
-       
       </div>
 
       <div>
