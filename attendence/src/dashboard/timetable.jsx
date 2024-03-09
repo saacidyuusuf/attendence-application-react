@@ -3,12 +3,15 @@ import Nav from "../components/Nav";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const TimeTable = ({user}) => {
+const TimeTable = ({ user }) => {
   const [timetable, setTimeTable] = useState([]);
 
   const getTimeFromTimestamp = (timestamp) => {
     const date = new Date(timestamp);
-    const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const time = date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     return time;
   };
   useEffect(() => {
@@ -24,9 +27,6 @@ const TimeTable = ({user}) => {
   return (
     <>
       <div className="TimeTable">
-      <Link className="backdash" to="/">
-        Back to Dashboard
-      </Link>
         <h1 className="one">TimeTable</h1>
         <div className="infoTimeTable">
           <h1>Class</h1>
@@ -53,5 +53,3 @@ const TimeTable = ({user}) => {
 };
 
 export default TimeTable;
-
-

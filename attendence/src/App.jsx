@@ -25,12 +25,12 @@ function App() {
       router("/dashboard");
     }
   }); */
-  console.log(supabase);
+ /*  console.log(supabase); */
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Auth />} />
+        <Route path="/login" element={<Auth />} />
         <Route path="/dashboard" element={<DashPage/>} />
         <Route
           path="/dashboard/timetable"

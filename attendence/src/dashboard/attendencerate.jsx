@@ -5,12 +5,8 @@ import { Link } from "react-router-dom";
 const AttendenceRate = () => {
   return (
     <>
-      <Nav />
-     <Link className="backdash" to="/">
-        Back to Dashboard
-      </Link>
       <div className="attendenceweek">
-        <h1>Studdent AttendenceRate</h1>
+        <h1>Student AttendenceRate</h1>
         <div className="attendenceHaye">
           <h2>Course</h2>
           <h2>Class</h2>
@@ -34,25 +30,25 @@ const AttendenceRate = () => {
           </div>
         </div>
         <button className="generate">Generate</button>
-      </div>
 
-      <div className="ratingHaye">
-        <h1>Students attendence Rate</h1>
-        <div className="rateInfo">
-          <p>Id</p>
-          <p>Name</p>
-          <p>Period</p>
-          <p>Present</p>
-          <p>Absent</p>
-          <p>Percentage</p>
-        </div>
-        <div className="rateList">
-          <p>C1220520</p>
-          <p>Cabdimalik Yuusuf Maxmuud</p>
-          <p>3</p>
-          <p>4</p>
-          <p>1</p>
-          <p>78%</p>
+        <div className="ratingHaye">
+          <h1>Students attendence Rate</h1>
+          <div className="rateInfo">
+            <p>Id</p>
+            <p>Name</p>
+            <p>Period</p>
+            <p>Present</p>
+            <p>Absent</p>
+            <p>Percentage</p>
+          </div>
+          <div className="rateList">
+            <p>C1220520</p>
+            <p>Cabdimalik Yuusuf Maxmuud</p>
+            <p>3</p>
+            <p>4</p>
+            <p>1</p>
+            <p>78%</p>
+          </div>
         </div>
       </div>
     </>

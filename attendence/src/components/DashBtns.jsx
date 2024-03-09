@@ -37,6 +37,7 @@ const DashBtns = ({ OncategorySelected }) => {
       setShowAttendenceList(false);
     }
   }, [selectedCategory]);
+  
   const handleCategoryClick = (index) => {
     setSelectedCategory(index);
     OncategorySelected(index); // Call passed function to update parent component state
@@ -54,20 +55,11 @@ const DashBtns = ({ OncategorySelected }) => {
               onClick={() => handleCategoryClick(index)}
               className={
                 selectedCategory === index ? "SelectedGreen" : "btnsDash"
-              }
-            >
+              }>
               <p className="dashIcons">{React.createElement(cate.icon)}</p>
               <p>{cate.name}</p>
             </div>
           ))}
-
-          <div className="DisplayClasses">
-            {showClassesList && <Classeslist />}
-          </div>
-
-          <div className="DisplayAttendence">
-            {showAttendenceList && <Attendencelist />}
-          </div>
         </div>
       )}
     </>

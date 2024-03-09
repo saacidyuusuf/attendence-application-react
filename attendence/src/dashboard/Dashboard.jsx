@@ -1,12 +1,9 @@
 /* eslint-disable */
 
-import ListStudent from "../components/ListStudent";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import Nav from "../components/Nav";
 import Classes from "../components/Classes";
-import User from "../components/User";
-import supabase from "../lib/supabase";
 import Login from "../Auth/page";
 import { ContextHaye } from "../context/context";
 
@@ -15,19 +12,18 @@ const Dashboard = () => {
   const router = useNavigate();
   const [getBackend, setBackend] = useState([]);
 
-
-  /*useEffect(() =>{
-    const FetchClasses = async () =>{
-      try{
-        const response = await fetch(`http://localhost:5000/dashboard`)
+  useEffect(() => {
+    const FetchClasses = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/dashboard`);
         const data = await response.json();
-        setBackend(data.classes)
-      }catch(err){
-        console.log(err)
+        setBackend(data.classes);
+      } catch (err) {
+        console.log(err);
       }
-    }
-    FetchClasses()
-  },[]) */
+    };
+    FetchClasses();
+  }, []);
 
   return (
     <>
@@ -36,12 +32,12 @@ const Dashboard = () => {
         <>
           <Nav user={user} />
           <Classes />
-          {/*
-        {getBackend.map((classka) =>(
-          <div className="Api" key={classka.id}>
-          <p>{classka.className}</p>
-          </div>
-        ))} */}
+
+          {getBackend.map((classka) => (
+            <div className="Api" key={classka.id}>
+              <p>{classka.className}</p>
+            </div>
+          ))}
         </>
       )}
     </>

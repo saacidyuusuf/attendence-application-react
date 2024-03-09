@@ -1,15 +1,17 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Nav from "../components/Nav";
 import ListStudent from "../components/ListStudent";
 import Listnames from "../components/listOnlynames";
 import supabase from "../lib/supabase";
+import DashBtns from "../components/DashBtns";
+import { ContextHaye } from "../context/context";
 
 const Students = () => {
   const [students, setStudents] = useState(null);
   const [error, setError] = useState();
+  const { selectedCategory, setSelectedCategory } = useContext(ContextHaye);
 
-  const ClassIdentifier = 'f2students'
+  const ClassIdentifier = "f2students";
   useEffect(() => {
     async function fetchData() {
       try {
@@ -40,8 +42,20 @@ const Students = () => {
         <h1 className="text-center">Student List</h1>
         {students ? (
           <>
-          <ListStudent students={students} classIdentifier={ClassIdentifier} currentDate={currentDate} />
-          <Listnames students={students} classIdentifier={ClassIdentifier} currentDate={currentDate} />
+            {selectedCategory === 1 && (
+              <Listnames
+                students={students}
+                classIdentifier={ClassIdentifier}
+                currentDate={currentDate}
+              />
+            )}
+            {selectedCategory === 2 && (
+              <ListStudent
+                students={students}
+                classIdentifier={ClassIdentifier}
+                currentDate={currentDate}
+              />
+            )}
           </>
         ) : (
           <span class="loader"></span>

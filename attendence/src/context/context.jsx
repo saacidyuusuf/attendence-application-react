@@ -13,7 +13,12 @@ const GlobalcontextProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
-  // No changes needed in render function, as it already displays published texts.
+  const [selectedCategory, setSelectedCategory] = useState(0); // State variable to store selected category
+
+  // Pass function to set selected category from DashBtns
+  const handleCategorySelect = (index) => {
+    setSelectedCategory(index);
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/sql/verify", {
@@ -23,6 +28,7 @@ const GlobalcontextProvider = ({ children }) => {
       .then((data) => {
         if (data.status === "success") {
           setUser(true);
+          console.log(data)
           setName(data.name);
         } else {
           setUser(false);
@@ -57,6 +63,9 @@ const GlobalcontextProvider = ({ children }) => {
         handleLogout,
         message,
         name,
+        selectedCategory,
+        setSelectedCategory,
+        handleCategorySelect
       }}
     >
       {children}
