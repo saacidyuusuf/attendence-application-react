@@ -1,29 +1,19 @@
 /* eslint-disable */
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  BiSolidDashboard,
-  BiCalendarWeek,
-  BiHomeAlt,
-  BiBookOpen,
-  BiBarChart,
-  BiCoinStack,
-} from "react-icons/bi";
+
 import { FiMenu } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { ContextHaye } from "../context/context";
-import Classeslist from "../../utills/Classeslist";
 import Category from "../components/CategoryData";
-import Attendencelist from "../../utills/attendencelist";
 
 const DashBtns = ({ OncategorySelected }) => {
-  const [classes, setclasses] = useState(false);
   const [openBtns, setOpenBtns] = useState(false);
   const { dataClass } = useContext(ContextHaye);
-  const [showAttendenceList, setShowAttendenceList] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0); // Initial state
-  const [showClassesList, setShowClassesList] = useState(false);
+  const [ShowClassesList, setShowClassesList] = useState(0);
+  const [ShowAttendenceList, setShowAttendenceList] = useState(0)
 
   useEffect(() => {
     if (selectedCategory === 1) {

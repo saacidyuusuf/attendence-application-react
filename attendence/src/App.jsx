@@ -31,7 +31,7 @@ function App() {
     <>
       <Routes>
         <Route path="/login" element={<Auth />} />
-        <Route path="/dashboard" element={<DashPage/>} />
+        <Route path="/" element={<DashPage/>} />
         <Route
           path="/dashboard/timetable"
           element={<Timetable user={user}/>}/>

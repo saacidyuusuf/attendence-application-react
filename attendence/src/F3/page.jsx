@@ -61,7 +61,7 @@ const Students = () => {
             )}
           </>
         ) : (
-          <span class="loader"></span>
+          <span className="loader"></span>
         )}
       </div>
     </>

@@ -10,7 +10,7 @@ const Listnames = ({ students, classesData, currentDate,classIdentifier }) => {
 
   return (
     <>
-      <Link className="backdash" to="/dashboard">
+      <Link className="backdash" to="/">
         Back to Dashboard
       </Link>
       <div className="listStudents">

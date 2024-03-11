@@ -34,7 +34,7 @@ export default function Nav() {
               className={profile !== true ? "menu" : "MenuOpen"}
             />
             {!user && (
-              <Link to="/dashboard" className="auth">
+              <Link to="/" className="auth">
                 join know
               </Link>
             )}

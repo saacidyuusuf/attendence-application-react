@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const User = () => {
   const [clicked, isclicked] = useState(false);
   const router = useNavigate();
-  const { user, message, name, handleLogout } = useContext(ContextHaye);
+  const { user, message, name, handleLogout, role } = useContext(ContextHaye);
 
   return (
     <>
@@ -22,7 +22,6 @@ const User = () => {
               className="userImage"
               src={Userimage}
             />
-            <h1 className="username">{name}</h1>
           </>
         ) : (
           <>
@@ -37,6 +36,14 @@ const User = () => {
 
         {clicked && (
           <div className="userInfo">
+            <h1 className="username">
+              Name:
+              {name}
+            </h1>
+            <p className="role">
+              Role:
+              {role}
+            </p>
             <h4>
               Subject:
               <span>Xisaab</span>
@@ -55,7 +62,7 @@ const User = () => {
             ) : (
               <div className="signoutUser">
                 <Link to="/">
-                <button>login</button>
+                  <button>login</button>
                 </Link>
               </div>
             )}

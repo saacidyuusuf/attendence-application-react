@@ -12,10 +12,10 @@ const Dashboard = () => {
   const router = useNavigate();
   const [getBackend, setBackend] = useState([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const FetchClasses = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/dashboard`);
+        const response = await fetch(`http://localhost:5000/classes`);
         const data = await response.json();
         setBackend(data.classes);
       } catch (err) {
@@ -23,7 +23,7 @@ const Dashboard = () => {
       }
     };
     FetchClasses();
-  }, []);
+  }, []);  */
 
   return (
     <>
@@ -33,11 +33,11 @@ const Dashboard = () => {
           <Nav user={user} />
           <Classes />
 
-          {getBackend.map((classka) => (
+          {/* {getBackend.map((classka) => (
             <div className="Api" key={classka.id}>
               <p>{classka.className}</p>
             </div>
-          ))}
+          ))} */}
         </>
       )}
     </>

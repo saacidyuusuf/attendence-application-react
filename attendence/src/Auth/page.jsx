@@ -3,22 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { ContextHaye } from "../context/context";
 
 const Login = () => {
-  const { user } = useContext(ContextHaye);
+  const { user,setUser } = useContext(ContextHaye);
   /*   const [UserData, setUserData] = useState([]);
   const [classData, setClasses] = useState([]); */
-  const router = useNavigate();
-  const [value, setValue] = useState({
+  // State to manage login status (initially set to unknown)
+  const navigate = useNavigate()
+    const [value, setValue] = useState({
     email: "",
     password: "",
   });
 
- /*  useEffect(() => {
-    if (user) {
-      router("/dashboard");
-    } else {
-      router("/login");
-    }
-  }); */
+
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -37,9 +32,11 @@ const Login = () => {
       .then((data) => {
         if (data.status === "success") {
           console.log(data);
-          router("/dashboard");
+          setUser(true)
+          navigate("/");
         } else {
           console.log(data.message);
+          navigate('/login')
         }
       })
       .catch((error) => {

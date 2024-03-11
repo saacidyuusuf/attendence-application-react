@@ -8,8 +8,6 @@ import {
   BiCoinStack,
 } from "react-icons/bi";
 import { ContextHaye } from "../context/context";
-import Attendencelist from "../../utills/attendencelist";
-import Classeslist from "../../utills/classeslist";
 import { useState, useContext } from "react";
 import { FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";

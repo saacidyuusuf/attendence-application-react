@@ -370,7 +370,7 @@ p {
 
 .showclasses {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   place-items: center;
   margin-top: 2rem;
@@ -385,7 +385,7 @@ p {
 
 .showAttendence {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   place-items: center;
   margin-top: 2rem;
@@ -421,7 +421,7 @@ p {
   color: black;
 }
 
-.dash .dashIcons{
+.dash .dashIcons {
   font-size: 2rem;
 }
 
@@ -975,7 +975,7 @@ input {
 
 .userImage {
   cursor: pointer;
-  width: 50%;
+  width: 80%;
   height: 8vh;
   display: block;
   margin-right: 0.4rem;
@@ -1000,6 +1000,10 @@ span {
   color: white;
   width: 40%;
   margin-top: 0;
+}
+
+.role {
+  color: #299292;
 }
 
 @media (max-width: 900px) {
